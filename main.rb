@@ -6,52 +6,27 @@ class Spot
     @name = name
   end
 end
-h = Hash.new
 
-array = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
-
+array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 game_hash = {}
 
 array.each_with_index do |item, index| game_hash[item] = Spot.new(index + 1) end
 
-# game_hash.each do |key, index| puts key; puts index end
-
-
-
 def value_retriever(hashbrown, input, marker)
-  case input
-  when 1
-    hashbrown['one'].name = marker
-  when 2
-    hashbrown['two'].name = marker
-  when 3
-    hashbrown['three'].name = marker
-  when 4
-    hashbrown['four'].name = marker
-  when 5
-    hashbrown['five'].name
-  when 6
-    hashbrown['six'].name = marker
-  when 7
-    hashbrown['seven'].name = marker
-  when 8
-    hashbrown['eight'].name = marker
-  when 9
-    hashbrown['nine'].name = marker
-  else
-    puts 'not working'
-  end
+  hashbrown[input].name = marker
 end
+
 win_condition = false
+
 until win_condition == true
   puts "Here is the current board state"
-  puts game_hash['one'].name.to_s + game_hash['two'].name.to_s + game_hash['three'].name.to_s
-  puts game_hash['four'].name.to_s + game_hash['five'].name.to_s + game_hash['six'].name.to_s
-  puts game_hash['seven'].name.to_s + game_hash['eight'].name.to_s + game_hash['nine'].name.to_s
+  puts game_hash[1].name.to_s + game_hash[2].name.to_s + game_hash[3].name.to_s
+  puts game_hash[4].name.to_s + game_hash[5].name.to_s + game_hash[6].name.to_s
+  puts game_hash[7].name.to_s + game_hash[8].name.to_s + game_hash[9].name.to_s
 
   puts "Please enter in a number from 1-9"
   user_input = gets.to_i
-  puts value_retriever(game_hash, user_input)
+  puts value_retriever(game_hash, user_input, 'X')
   if user_input == 5 then win_condition = true end
 
 end
